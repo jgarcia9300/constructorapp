@@ -18,3 +18,10 @@ pipenv lock #bloquea las versiones de las dependencias para deploy
 pipenv install --ignore-pipfile #instala las dependencias bloqueadas
 
 https://www.youtube.com/watch?v=6Qmnh5C4Pmo
+
+#esconder credenciales de la base de datos que esta en el archivo settings.py. por medio del modulo import os se incluyen las variables listadas a continuacion
+
+DB_NAME=constructorappdb
+DB_USER=postgres
+DB_USER_PASSWORD=12345678
+DB_HOST=localhost
