@@ -2,7 +2,7 @@
 net stop hns 
 net start hns
 
-#Tener instalado python 3.12.3
+#Tener instalado python 3.9.7
 pipenv install
 pipenv shell
 pipenv install django
@@ -25,3 +25,5 @@ DB_NAME=constructorappdb
 DB_USER=postgres
 DB_USER_PASSWORD=12345678
 DB_HOST=localhost
+
+#Tener en cuenta que la base de datos es local, por lo que se debe tener instalado postgresql y tener una base de datos creada con el nombre constructorappdb en donde el usuario y la contraseña es postgres y 12345678 respectivamente
