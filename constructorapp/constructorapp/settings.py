@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import environ
+import django_heroku #importar libreria para deploy en heroku
+import dj_database_url #importar libreria para deploy en heroku
 
 # Initialise environment variables
 env = environ.Env()
@@ -30,7 +32,7 @@ SECRET_KEY = 'django-insecure-^l5&@a9doin#=xoz@4=j9x&)q)dmi4u@hcm%!+$h#*or$wx0sx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] #definir los host permitidos. inicialmente se deja en * para permitir cualquier host pero por defecto esta vacio
 
 
 # Application definition
@@ -130,6 +132,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'constructorapp/static']
 STATIC_ROOT = BASE_DIR / 'static'
+
+django_heroku.settings(locals()) #configuracion para deploy en heroku
 
 #definir ruta estatica, util para deploy en servidor remoto
 
