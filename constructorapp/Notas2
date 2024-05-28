@@ -29,3 +29,7 @@ DB_HOST=localhost
 #Tener en cuenta que la base de datos es local, por lo que se debe tener instalado postgresql y tener una base de datos creada con el nombre constructorappdb en donde el usuario y la contraseña es postgres y 12345678 respectivamente
 
 #procfile es un archivo que se crea en la raiz del proyecto y se le agrega el siguiente contenido. Este archivo es necesario para el deploy en heroku
+
+# sourceMappingURL=bootstrap.min.css.map */ eliminar esta linea del archivo bootstrap.min.css me permite el deploy pero con errores
+
+#web: gunicorn mysite.wsgi:application --log-file -arreglar este archivo
