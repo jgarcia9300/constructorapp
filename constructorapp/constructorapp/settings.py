@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 import environ
 import django_heroku #importar libreria para deploy en heroku
 import dj_database_url #importar libreria para deploy en heroku
@@ -62,7 +63,8 @@ ROOT_URLCONF = 'constructorapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], #registro de la carpeta donde van a estar los html
+        # 'DIRS': [BASE_DIR / 'templates'], #registro de la carpeta donde van a estar los html.FUncional
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #registro de la carpeta donde van a estar los html.FUncional
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,11 +129,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
-#Definir donde van a estar los archivos estaticos
+#Definir donde van a estar los archivos estaticos. funcional
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'constructorapp/static']
-STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [BASE_DIR / 'constructorapp/static']
+# STATIC_ROOT = BASE_DIR / 'static'
+
+
+#modificacion para deploy en heroku
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'constructorapp/static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 django_heroku.settings(locals()) #configuracion para deploy en heroku
 
