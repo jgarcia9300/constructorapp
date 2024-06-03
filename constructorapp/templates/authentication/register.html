@@ -1,5 +1,8 @@
 <!-- la plantilla extiende base_auth.html y proporciona contenido específico para los bloques content. -->
-{% extends 'base_auth.html' %} {% block content %}
+{% extends 'base_auth.html' %} 
+{% load static%}
+
+{% block content %}
 
 <div class="row">
   <div class="col-md-4"></div>
@@ -35,6 +38,8 @@
             />
           </div>
 
+          <div class="invalid-feedback" style="display: none;"></div>
+
           <div class="form-group py-2">
             <input
               type="password"
@@ -56,5 +61,7 @@
 
   <div class="col-md-4"></div>
 </div>
+
+<script src="{% static 'js/register.js' %}"></script>
 
 {% endblock content %}
