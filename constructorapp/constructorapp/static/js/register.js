@@ -1,8 +1,22 @@
 const usernameField = document.querySelector("#usernameField"); // id of the input field
 const feedBackArea = document.querySelector(".invalid-feedback"); // class of the div where the error message will be displayed
 const emailField = document.querySelector("#emailField"); // id of the input field
-const emailFeedBackArea = document.querySelector(".emailFeedBackArea"); // class of the div where the error message will be displayed
-const usernameSuccessOutput = document.querySelector(".usernameSuccessOutput"); // class of the div where the success message will be displayed
+const emailFeedBackArea = document.querySelector(".emailFeedBackArea");
+const passwordField = document.querySelector("#passwordField");
+const usernameSuccessOutput = document.querySelector(".usernameSuccessOutput");
+const showPasswordToggle = document.querySelector(".showPasswordToggle");
+
+const handleToggleInput = (e) => {
+  if (showPasswordToggle.textContent === "MOSTRAR") {
+    showPasswordToggle.textContent = "ESCONDER";
+    passwordField.setAttribute("type", "text"); //cambia el tipo de input a password
+  } else {
+    showPasswordToggle.textContent = "MOSTRAR";
+    passwordField.setAttribute("type", "password");
+  }
+};
+
+showPasswordToggle.addEventListener("click", handleToggleInput);
 
 emailField.addEventListener("keyup", (e) => {
   const emailVal = e.target.value; // value of the input field

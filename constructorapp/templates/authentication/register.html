@@ -1,6 +1,6 @@
 <!-- la plantilla extiende base_auth.html y proporciona contenido específico para los bloques content. -->
 {% extends 'base_auth.html' %} 
-{% load static%}
+{% load static %}
 
 {% block content %}
 
@@ -10,15 +10,17 @@
     <div class="card mt-5">
 
 
-      <div class="card-body >
+      <div class="card-body py-3" >
 
         <div class="card-title">
           <h4 class="text-center">Registro</h4>
         </div>
 
-
-        <form action="" method="post">
-          <div class="form-group py-2">
+        <form action="{% url 'register' %}" method="post">
+          {% csrf_token %}
+          {% include 'partials/_messages.html' %}
+          
+          <div class="form-group">
             <input
               type="text"
               name="username"
@@ -28,7 +30,7 @@
             />
           </div>
 
-          <div class="invalid-feedback" style="display: none;"></div>
+          <div class="invalid-feedback invalid_feedback" style="display: none;"></div>
           <p class="text-sm text-success usernameSuccessOutput"></p>
           <div class="form-group">
             <input
@@ -42,7 +44,7 @@
 
           <div class="emailFeedbackArea invalid-feedback" style="display: none;"></div>
 
-          <div class="form-group py-2">
+          <div class="form-group">
             <input
               type="password"
               name="password"
@@ -50,11 +52,11 @@
               id="passwordField"
               class="form-control form-control-sm"
             />
-            <small class="float-end py-2">MOSTRAR</small>
+            <small class="float-end py-2 showPasswordToggle">MOSTRAR</small>
           </div>
-    
+          <input type="submit" value="Registrar" class="btn btn-primary submit-btn mx-auto d-block" />
         </form>
-        <input type="submit" value="Registrar" class="btn btn-primary mx-auto d-block" />
+
       </div>
 
       </div>

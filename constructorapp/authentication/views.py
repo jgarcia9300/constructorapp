@@ -5,6 +5,7 @@ from django.http import JsonResponse #se importa la clase JsonResponse que permi
 from django.contrib.auth.models import User #se importa el modelo User de la aplicacion auth de django. Permite interactuar con la tabla de usuarios de la base de datos
 # Create your views here.
 from validate_email import validate_email #se importa la funcion validate_email que permite validar si un email es valido
+from django.contrib import messages #se importa la libreria messages que permite enviar mensajes de exito o error
 
 #la siguiente clase se encarga de validar el email. Si el email no es valido, se retorna un mensaje de error. Si el email ya esta en uso, se retorna un mensaje de error
 class EmailValidationView(View):
@@ -44,3 +45,12 @@ class RegistrationView(View):
   """
   def get(self, request):
     return render(request, 'authentication/register.html')
+  
+  def post(self, request):
+    # obtener datos del usuario
+    # Validar
+    # Crear cuenta de usuario
+
+    username = request.POST ['username'] 
+    email = request.POST ['email']
+    password = request.POST ['password']

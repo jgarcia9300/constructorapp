@@ -9,12 +9,13 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+from django.contrib import messages #importar libreria para mensajes de exito, advertencia, informacion y error
 from pathlib import Path
 import os
 import environ
 import django_heroku #importar libreria para deploy en heroku
 import dj_database_url #importar libreria para deploy en heroku
+
 
 # Initialise environment variables
 env = environ.Env()
@@ -146,8 +147,10 @@ django_heroku.settings(locals()) #configuracion para deploy en heroku
 
 #definir ruta estatica, util para deploy en servidor remoto
 
-
-
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+} #definir el tipo de mensaje de error
+ 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
