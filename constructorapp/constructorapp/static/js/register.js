@@ -5,6 +5,7 @@ const emailFeedBackArea = document.querySelector(".emailFeedBackArea");
 const passwordField = document.querySelector("#passwordField");
 const usernameSuccessOutput = document.querySelector(".usernameSuccessOutput");
 const showPasswordToggle = document.querySelector(".showPasswordToggle");
+const submitBtn = document.querySelector(".submit-btn");
 
 const handleToggleInput = (e) => {
   if (showPasswordToggle.textContent === "MOSTRAR") {
@@ -38,9 +39,12 @@ emailField.addEventListener("keyup", (e) => {
         console.log("data", data);
 
         if (data.email_error) {
+          submitBtn.disabled = true;
           emailField.classList.add("is-invalid"); //agrega la clase is-invalid al input. Esta clase es de bootstrap
           emailFeedBackArea.style.display = "block"; //jace visible el elemento en la pagina web como un elemento de bloque
           emailFeedBackArea.innerHTML = `<p>${data.email_error}</p>`; //agrega el mensaje de error al div con la clase invalid-feedback
+        } else {
+          submitBtn.removeAttribute("disabled");
         }
       });
   }
@@ -71,6 +75,9 @@ usernameField.addEventListener("keyup", (e) => {
           usernameField.classList.add("is-invalid"); //agrega la clase is-invalid al input. Esta clase es de bootstrap
           feedBackArea.style.display = "block"; //muestra el div con la clase invalid-feedback
           feedBackArea.innerHTML = `<p>${data.username_error}</p>`; //agrega el mensaje de error al div con la clase invalid-feedback
+          submitBtn.disabled = true;
+        } else {
+          submitBtn.removeAttribute("disabled");
         }
       });
   }

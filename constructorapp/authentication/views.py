@@ -47,10 +47,29 @@ class RegistrationView(View):
     return render(request, 'authentication/register.html')
   
   def post(self, request):
+    """
+    Handle the POST request for user registration.
+
+    Args:
+      request (HttpRequest): The HTTP request object.
+
+    Returns:
+      HttpResponse: The HTTP response object.
+
+    """
     # obtener datos del usuario
     # Validar
     # Crear cuenta de usuario
 
-    username = request.POST ['username'] 
-    email = request.POST ['email']
-    password = request.POST ['password']
+    username = request.POST['username'] #guarda el campo usuario enviado desde el formulario
+    email = request.POST['email']
+    password = request.POST['password']
+
+    if not User.objects.filter(username=username).exists():
+      if not User.objects.filter(email=email).exists():
+
+        if len(password) < 6:
+          messages.error(request, 'La contraseña es muy corta')
+          return render(request, 'authentication/register.html')
+        
+    return render(request, 'authentication/register.html')
